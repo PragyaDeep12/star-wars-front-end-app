@@ -20,7 +20,7 @@ export default function MainPage({ match }) {
   }, []);
   return (
     <div>
-      <h3 className="text-left ml-2 pt-2">Charechter List</h3>
+      <h3 className="text-left ml-2 pt-2">Starwars API : Charechters</h3>
       <hr />
       <Filter />
       <hr />
