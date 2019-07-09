@@ -15,7 +15,9 @@ export default function EachPerson(props) {
           openModal(<EachPersonDetails element={person} />);
         }}
       >
-        <div className="col-md-1">{props.count}</div>
+        <div className="col-md-1">
+          <h6>{props.count}</h6>
+        </div>
         <div className="col-md-2">{person.name}</div>
         <div className="col-md-1">{person.height}</div>
         <div className="col-md-2">{person.hair_color}</div>

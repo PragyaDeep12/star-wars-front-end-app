@@ -1,12 +1,30 @@
 .hidden {
   display: none;
 }
+::-webkit-scrollbar {
+  width: 5px;
+  height: 1px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(252, 252, 252, 0);
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-bottom: calc(5vh);
+}
+::-webkit-scrollbar-thumb {
+  background-color: #4f2085;
+  outline: 1px solid #4f2085;
+  border-radius: 2px;
+}
+
 .pointer {
   cursor: pointer;
 }
 .loading {
-  width: 20px;
-  height: 20px;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  margin: 20px;
 }
 .each-char-row {
   background-color: aqua !important;
