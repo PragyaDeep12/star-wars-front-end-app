@@ -10,7 +10,7 @@ export default function ColorChooser(props) {
   const [color, setColor] = useState<string>("#00664a");
   const [colors, setColors] = useState<string[]>([]);
   useEffect(() => {
-    setColors(USERNAME_COLORS);
+    setColors(props.colors);
   }, []);
   function handleChange(selectedColor) {
     // ?if (uid) {
@@ -20,15 +20,26 @@ export default function ColorChooser(props) {
   return (
     <div className="color-chooser">
       {colors.map(element => {
-        return (
-          <ColorRadio
-            selectedColor={color}
-            color={element}
-            onChange={e => {
-              handleChange(e);
-            }}
-          />
-        );
+        if (props.showAll)
+          return (
+            <ColorRadio
+              selectedColor={element}
+              color={element}
+              onChange={e => {
+                handleChange(e);
+              }}
+            />
+          );
+        else
+          return (
+            <ColorRadio
+              selectedColor={color}
+              color={element}
+              onChange={e => {
+                handleChange(e);
+              }}
+            />
+          );
       })}
     </div>
   );

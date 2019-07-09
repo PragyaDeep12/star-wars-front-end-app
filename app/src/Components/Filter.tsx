@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import ColorChooser from "./ColorChooser";
 import { Typography } from "@material-ui/core";
 import MultiSelect from "./MultiSelect";
+import { USERNAME_COLORS } from "../AppConstants";
 export default function Filter() {
   return (
     <div className="row">
@@ -14,7 +15,7 @@ export default function Filter() {
 
       <div className="col-md-2">
         <Typography gutterBottom>HAIR COLOR</Typography>
-        <ColorChooser />
+        <ColorChooser colors={USERNAME_COLORS} />
       </div>
 
       <div className="col-md-2">
@@ -23,7 +24,7 @@ export default function Filter() {
       </div>
       <div className="col-md-2">
         <Typography gutterBottom>EYE COLOR</Typography>
-        <ColorChooser />
+        <ColorChooser colors={USERNAME_COLORS} />
       </div>
 
       <div className="col-md-2 multi-select">
