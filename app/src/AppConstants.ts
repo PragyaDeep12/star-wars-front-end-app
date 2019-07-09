@@ -1,4 +1,4 @@
-//chat username colors
+//colors
 export const USERNAME_COLORS = [
   "#ff7b00",
   "#00664a",
