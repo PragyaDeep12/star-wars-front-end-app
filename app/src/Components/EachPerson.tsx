@@ -3,18 +3,28 @@ import PersonModel from "../Models/PersonModel";
 import { Link } from "react-router-dom";
 import { openModal } from "./CustomDialog";
 import EachPersonDetails from "./EachPersonDetails";
-export default function EachPerson(person: PersonModel) {
+
+import Paper from "@material-ui/core/Paper";
+export default function EachPerson(props) {
+  const person: PersonModel = props.element;
   return (
-    <div className="col-md-3 btn btn-light">
-      <Link
-        to={"/character/" + person.id}
-        className="person-list-data"
+    <Paper>
+      <div
+        className="row btn-light pb-2 pt-2 pointer"
         onClick={() => {
           openModal(<EachPersonDetails element={person} />);
         }}
       >
-        {person.name}
-      </Link>
-    </div>
+        <div className="col-md-1">{props.count}</div>
+        <div className="col-md-2">{person.name}</div>
+        <div className="col-md-1">{person.height}</div>
+        <div className="col-md-2">{person.hair_color}</div>
+        <div className="col-md-2">
+          {person.birth_year ? person.birth_year : ""}
+        </div>
+        <div className="col-md-2">{person.eye_color}</div>
+        <div className="col-md-2">{person.species}</div>
+      </div>
+    </Paper>
   );
 }

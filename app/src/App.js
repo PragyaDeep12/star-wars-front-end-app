@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
+import "./Styles/stylesheet.css";
 import MainPage from "./Pages/MainPage";
 import EachPersonDetails from "./Components/EachPersonDetails";
 import CustomDialog from "./Components/CustomDialog";
