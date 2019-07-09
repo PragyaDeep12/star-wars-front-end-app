@@ -10,7 +10,7 @@ export default function EachPerson(props) {
   return (
     <Paper>
       <div
-        className="row btn-light pb-2 pt-2 pointer"
+        className="row btn-light pb-2 pt-2 text-left pointer"
         onClick={() => {
           openModal(<EachPersonDetails element={person} />);
         }}

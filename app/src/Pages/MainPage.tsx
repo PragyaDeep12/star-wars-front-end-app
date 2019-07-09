@@ -24,7 +24,7 @@ export default function MainPage({ match }) {
       <hr />
       <Filter />
       <hr />
-      <div className="row">
+      <div className="row text-left">
         <div className="col-md-1">
           <h6>INDEX</h6>
         </div>
