@@ -35,6 +35,7 @@
   margin-left: auto;
   margin-right: auto;
   width: calc(300px + 10%);
+  background-color: rgb(252, 238, 220);
 }
 .multi-select {
   max-height: 50px;

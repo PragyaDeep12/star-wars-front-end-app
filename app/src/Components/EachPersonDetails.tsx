@@ -8,6 +8,7 @@ import { closeDialog } from "./CustomDialog";
 import { getMap } from "../AppConstants";
 import ColorRadio from "./ColorRadio";
 import ColorChooser from "./ColorChooser";
+import { getColorCode } from "../Util";
 export default function EachPersonDetails(props) {
   const person: PersonModel = props.element;
   // console.log(ha)
@@ -33,7 +34,7 @@ export default function EachPersonDetails(props) {
             <div className="col-md-7">
               {person.eye_color ? (
                 <ColorChooser
-                  colors={person.eye_color.split(",")}
+                  colors={getColorCode(person.eye_color.split(","))}
                   showAll={true}
                 />
               ) : (
@@ -66,7 +67,7 @@ export default function EachPersonDetails(props) {
             <div className="col-md-7">
               {person.hair_color ? (
                 <ColorChooser
-                  colors={person.hair_color.split(",")}
+                  colors={getColorCode(person.hair_color.split(","))}
                   showAll={true}
                 />
               ) : (
@@ -91,7 +92,7 @@ export default function EachPersonDetails(props) {
         }}
       >
         {" "}
-        <h6 className="pointer">Cancel</h6>
+        <h6 className="pointer">CANCEL</h6>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { element } from "prop-types";
+import { getMap } from "./AppConstants";
 
 export const fetchSequence = async (
   api: string,
@@ -74,4 +75,19 @@ const fetchSpecies = (api: string) => {
       });
   });
   return promise;
+};
+
+export const getColorCode = (names: String[]): String[] => {
+  var colors: String[] = [];
+  names.forEach(colorName => {
+    if (colorName) {
+      var cCode = getMap().get(colorName) as String;
+      if (cCode) {
+        colors.push(cCode);
+      } else {
+        colors.push(colorName);
+      }
+    }
+  });
+  return colors;
 };
