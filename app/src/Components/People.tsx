@@ -1,6 +1,8 @@
 import * as React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import EachPerson from "./EachPerson";
+import PersonModel from "../Models/PersonModel";
 export default function People(props) {
   // const [list, setList] = useState(props.peopleList);
   const { peopleList } = props;
@@ -55,18 +57,12 @@ export default function People(props) {
           {">"}
         </button>
       </div>
+
       <div className="row">
-        <div className="col">Name</div>
-        <div className="col">Height</div>
+        {peopleList.map((item: PersonModel, index) => {
+          return EachPerson(item);
+        })}
       </div>
-      {peopleList.map((item, index) => {
-        return (
-          <div className="row">
-            <div className="col">{item.name}</div>
-            <div className="col">{item.height}</div>
-          </div>
-        );
-      })}
     </div>
   );
 }

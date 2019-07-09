@@ -7,11 +7,14 @@ export default function MainPage({ match }) {
   const [peopleList, setPeopleList]: [Array<PersonModel>, any] = useState([]);
   const callBackend = async () => {
     var l: any = [];
-    await axios.get("/people").then(async list => {
+    var i = 1;
+    await axios.get("https://swapi.co/api/people/").then(async list => {
+      console.log(list);
       list.data.results.map((element: any, index) => {
         // console.log(l);
 
         let person: PersonModel = {
+          id: i,
           name: element.name,
           birthYear: element.birth_year,
           height: element.height,
@@ -25,9 +28,11 @@ export default function MainPage({ match }) {
           skinColor: element.skin_color,
           species: element.species,
           starships: element.starships,
-          vehicles: element.vehicles
+          vehicles: element.vehicles,
+          url: element.url
         };
         l.push(person);
+        i++;
         // setPeopleList([...peopleList, person]);
       });
       // setPeopleList(list.data.results);
@@ -35,15 +40,29 @@ export default function MainPage({ match }) {
       let page = 2;
       while (next) {
         next = false;
-        var res = await axios.get("/people/?page=" + page);
+        var res = await axios.get("https://swapi.co/api/people/?page=" + page);
 
         await res.data.results.map((element, index) => {
           let person: PersonModel = {
+            id: i,
             name: element.name,
             birthYear: element.birth_year,
-            height: element.height
+            height: element.height,
+            created: element.created,
+            edited: element.edited,
+            films: element.films,
+            eyeColor: element.eye_color,
+            gender: element.gender,
+            homeworld: element.homeworld,
+            mass: element.mass,
+            skinColor: element.skin_color,
+            species: element.species,
+            starships: element.starships,
+            vehicles: element.vehicles,
+            url: element.url
           };
           l.push(person);
+          i++;
           // setPeopleList([...peopleList, person]);
         });
 

@@ -1,4 +1,5 @@
 export default interface PersonModel {
+  id?: number | null;
   name?: string | null;
   height?: number | null;
   birthYear?: string | null;
@@ -13,4 +14,5 @@ export default interface PersonModel {
   species?: Array<string> | null;
   starships?: Array<string> | null;
   vehicles?: Array<string> | null;
+  url?: string | null;
 }
