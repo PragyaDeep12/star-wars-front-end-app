@@ -2,8 +2,8 @@ import axios from "axios";
 import { element } from "prop-types";
 import { getMap } from "./AppConstants";
 import PersonModel from "./Models/PersonModel";
-export var MaxBirthYear = 0;
-export var MinBirthYear = 300;
+export var MaxBirthYear = 896;
+export var MinBirthYear = 8;
 export const fetchSequence = async (
   api: string,
   list,
