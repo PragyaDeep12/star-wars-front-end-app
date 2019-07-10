@@ -219,7 +219,11 @@ export default function CustomizedSlider(props) {
       <AirbnbSlider
         ThumbComponent={AirbnbThumbComponent}
         aria-label="Airbnb slider"
-        defaultValue={[20, 40]}
+        defaultValue={[0, 100]}
+        onChange={(e, f) => {
+          // console.log(e);
+          props.birthYearRangeCallBack(f);
+        }}
       />
     </React.Fragment>
   );

@@ -11,7 +11,7 @@ export default interface PersonModel {
   homeworld?: string | null;
   mass?: string | null;
   skin_color?: string | null;
-  species?: Array<string> | null;
+  species?: string | null;
   starships?: Array<string> | null;
   vehicles?: Array<string> | null;
   url?: string | null;
