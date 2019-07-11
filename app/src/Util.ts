@@ -136,30 +136,63 @@ export const MapRealYearWithPercent = (arr: number[]) => {
 export const isValidFilteredObject = (
   charechter: PersonModel,
   birthYearRange: number[],
-  species: string | undefined
+  species: string | undefined,
+  film: string | undefined
 ): boolean => {
-  console.log(charechter);
-  console.log(birthYearRange);
-  console.log(species);
   var bYear = charechter.birth_year;
-  if (bYear && bYear !== "unknown") {
+  if (bYear) {
     //birth year of a charenchter is not unknown
     var bNYear = Number.parseFloat(bYear.substring(0, bYear.length - 3));
     //birth  year range defined always
-    if (bNYear > birthYearRange[0] && bNYear < birthYearRange[1]) {
+    if (
+      (bNYear > birthYearRange[0] && bNYear < birthYearRange[1]) ||
+      bYear === "unknown"
+    ) {
       //birth year matched filter
       if (species) {
         //species is defined check species before add
-        if (charechter.species === species) {
-          //species checked and matched
-          return true;
+        if (film) {
+          //species and film both are defined check both
+          if (
+            charechter.species === species &&
+            isMovieExist(film, charechter.films)
+          ) {
+            //charech belongs to both filter
+            return true;
+          } else {
+            // charechter doesnot belong to all filter
+            return false;
+          }
         } else {
-          //species checked and unmatched
-          return false;
+          //species defined but film undefined now check species only
+
+          if (charechter.species === species) {
+            //charechter belongs to species
+            return true;
+          } else {
+            // charechter doesnot belong to species
+            return false;
+          }
         }
       } else {
-        //species undefined
-        return true;
+        //species undefined check whether film is defined
+        if (film) {
+          // species undefined but film is defined check charechter exist in film
+          console.log(charechter.name, film, charechter.films);
+          if (isMovieExist(film, charechter.films)) {
+            //yes charechter exist in film
+            console.log(true);
+            return true;
+          } else {
+            //no charecter doesnot exist in film
+
+            console.log(false);
+            return false;
+          }
+        } else {
+          //film and species both are undefined
+          return true;
+        }
       }
     } else {
       //if birth year filter unmatched value shouldnot be shown att all
@@ -167,4 +200,35 @@ export const isValidFilteredObject = (
     }
   }
   return false;
+};
+
+export const fetchMovies = (moviesApi: String[]): Promise<any[]> => {
+  var promise = new Promise<any[]>(async (resolve, reject) => {
+    var films: any[] = [];
+    await moviesApi.map(async (api, index) => {
+      await axios
+        .get(api.toString())
+        .then(res => {
+          var data = res.data;
+          // resolve(data.name);
+          // console.log(data);
+          if (data) films.push({ title: data.title, url: api });
+        })
+        .catch(err => {
+          reject(null);
+          console.error(err);
+        });
+      if (index === moviesApi.length - 1) {
+        resolve(films);
+      }
+    });
+  });
+  return promise;
+};
+export const isMovieExist = (
+  movieName: String,
+  list: String[] | null | undefined
+): boolean => {
+  if (list) return list.includes(movieName);
+  else return false;
 };

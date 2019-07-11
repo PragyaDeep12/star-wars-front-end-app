@@ -8,32 +8,19 @@ export default function People(props) {
   let count = 1;
   return (
     <div>
-      {/* <div className="row">
-        <button
-          className=" btn btn-primary"
-          onClick={() => {
-            if (page !== 1) {
-              setPage(page - 1);
-            }
-          }}
-        >
-          {"<"}
-        </button>
-        <button
-          className=" btn btn-primary"
-          onClick={() => {
-            if (hasNext) {
-              setPage(page + 1);
-            }
-          }}
-        >
-          {">"}
-        </button>
-      </div> */}
-
       <div>
         {peopleList.map((item: PersonModel, index) => {
-          return <EachPerson element={item} key={index} count={count++} />;
+          return (
+            <EachPerson
+              element={item}
+              key={index}
+              count={count++}
+              filmList={props.filmList}
+              filmMap={props.filmMap}
+              setFilmMap={props.setFilmMap}
+              setFilmList={props.setFilmList}
+            />
+          );
         })}
       </div>
     </div>

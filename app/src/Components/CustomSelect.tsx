@@ -25,15 +25,16 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 export default function CustomSelect(props) {
-  const { list } = props;
+  const { list, map } = props;
   const classes = useStyles();
   const [selectedValue, setSelectedValue] = useState();
   return (
     <div>
       <FormControl variant="filled" className={classes.formControl} fullWidth>
-        <InputLabel htmlFor="filled-age-simple">Age</InputLabel>
+        <InputLabel htmlFor="filled-age-simple">{props.label}</InputLabel>
         <Select
           value={selectedValue}
+          disabled={props.disabled}
           onChange={e => {
             setSelectedValue(e.target.value);
             props.onChange(e.target.value);
@@ -43,9 +44,21 @@ export default function CustomSelect(props) {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          {list.map(element => {
-            return <MenuItem value={element}>{element}</MenuItem>;
-          })}
+          {map
+            ? map.map((element, index) => {
+                return (
+                  <MenuItem value={element.value} key={index}>
+                    {element.key}
+                  </MenuItem>
+                );
+              })
+            : list.map((element, index) => {
+                return (
+                  <MenuItem value={element} key={index}>
+                    {element}
+                  </MenuItem>
+                );
+              })}
         </Select>
       </FormControl>
     </div>
