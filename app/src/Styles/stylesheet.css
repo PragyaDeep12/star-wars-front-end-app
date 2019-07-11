@@ -54,3 +54,6 @@
   border-color: rgb(58, 58, 58);
   border-style: solid;
 }
+ul {
+  padding-left: 20px !important;
+}

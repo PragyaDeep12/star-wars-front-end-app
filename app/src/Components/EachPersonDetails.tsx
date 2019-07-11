@@ -53,14 +53,6 @@ export default function EachPersonDetails(props) {
                 <h6>Eye-Color:</h6>
               </div>
               <div className="col-md-7">
-                {/* {person.eye_color ? (
-                <ColorChooser
-                  colors={getColorCode(person.eye_color.split(","))}
-                  showAll={true}
-                />
-              ) : (
-                person.eye_color
-              )} */}
                 <div id="eye-color" className="row" />
               </div>
             </div>
@@ -87,14 +79,6 @@ export default function EachPersonDetails(props) {
                 <h6>Hair-Color :</h6>
               </div>
               <div className="col-md-7">
-                {/* {person.hair_color ? (
-                <ColorChooser
-                  colors={getColorCode(person.hair_color.split(","))}
-                  showAll={true}
-                />
-              ) : (
-                person.hair_color
-              )} */}
                 <div id="hair-color" className="row" />
               </div>
             </div>
@@ -115,7 +99,7 @@ export default function EachPersonDetails(props) {
               <div className="col-md-7 text-left">
                 <ul>
                   {props.films.map(film => {
-                    return <li>{film}</li>;
+                    return <li className="list-icons">{film}</li>;
                   })}
                 </ul>
               </div>
