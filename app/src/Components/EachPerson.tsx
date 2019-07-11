@@ -42,40 +42,42 @@ export default function EachPerson(props) {
   }, [person.films]);
   // useEffect()
   return (
-    <Paper>
-      <div
-        className="row btn-light pb-2 pt-2 text-left pointer"
-        onClick={() => {
-          openModal(<EachPersonDetails element={person} />);
-        }}
-      >
-        <div className="col-md-1">
-          <h6>{props.count}</h6>
-        </div>
-        <div className="col-md-2">{person.name}</div>
-        <div className="col-md-1">{person.height}</div>
-        <div className="col-md-1">{person.hair_color}</div>
-        <div className="col-md-2">
-          {person.birth_year ? person.birth_year : ""}
-        </div>
-        <div className="col-md-3">
-          <div>
-            <h6>
-              {person.films
-                ? "Worked in " + person.films.length + " Movies"
-                : "0"}
-            </h6>
+    <div className="mb-2 ml-2 mr-2">
+      <Paper>
+        <div
+          className="row btn-light pb-2 pt-2 text-left pointer"
+          onClick={() => {
+            openModal(<EachPersonDetails element={person} />);
+          }}
+        >
+          <div className="col-md-1">
+            <h6>{props.count}</h6>
           </div>
-          {!isfilmsLoading ? (
-            films.map((film, index) => {
-              return <div>{film.title}</div>;
-            })
-          ) : (
-            <img src={Loading} className="loading" alt="...loading" />
-          )}
+          <div className="col-md-2">{person.name}</div>
+          <div className="col-md-1">{person.height}</div>
+          <div className="col-md-1">{person.hair_color}</div>
+          <div className="col-md-2">
+            {person.birth_year ? person.birth_year : ""}
+          </div>
+          <div className="col-md-3">
+            <div>
+              <h6>
+                {person.films
+                  ? "Worked in " + person.films.length + " Movies"
+                  : "0"}
+              </h6>
+            </div>
+            {!isfilmsLoading ? (
+              films.map((film, index) => {
+                return <div>{film.title}</div>;
+              })
+            ) : (
+              <img src={Loading} className="loading" alt="...loading" />
+            )}
+          </div>
+          <div className="col-md-2">{person.species}</div>
         </div>
-        <div className="col-md-2">{person.species}</div>
-      </div>
-    </Paper>
+      </Paper>
+    </div>
   );
 }
