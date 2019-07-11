@@ -37,6 +37,20 @@
   width: calc(300px + 10%);
   background-color: rgb(252, 238, 220);
 }
+.card-body {
+  padding: 10px;
+}
 .multi-select {
   max-height: 50px;
+}
+.color-box {
+  width: 20px !important;
+  max-width: 20px !important;
+  height: 20px;
+  display: flex;
+  padding-right: 0px !important;
+  border-radius: 5px;
+  margin-right: 5px;
+  border-color: rgb(58, 58, 58);
+  border-style: solid;
 }

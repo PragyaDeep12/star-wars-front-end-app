@@ -47,7 +47,10 @@ export default function EachPerson(props) {
         <div
           className="row btn-light pb-2 pt-2 text-left pointer"
           onClick={() => {
-            openModal(<EachPersonDetails element={person} />);
+            if (!isfilmsLoading)
+              openModal(
+                <EachPersonDetails element={person} films={filmList} />
+              );
           }}
         >
           <div className="col-md-1">
